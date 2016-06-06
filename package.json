@@ -4,9 +4,13 @@
   "description": "",
   "author": "",
   "license": "ISC",
+  "repository": "https://github.com/divizionbyzero/forte.git",
   "dependencies": {
     "gulp": "^3.9.1",
     "gulp-jade": "^1.1.0",
-    "gulp-stylus": "^2.4.0"
+    "gulp-stylus": "^2.4.0",
+    "jade": "^1.11.0",
+    "reset-css": "^2.0.2011012603",
+    "stylus": "^0.54.5"
   }
 }
