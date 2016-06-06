@@ -11,7 +11,7 @@ $ npm i -g gulp
 ```
 
 ```sh
-$ git clone [git-repo-url]
+$ git clone [https://github.com/divizionbyzero/forte.git] https://github.com/divizionbyzero/forte.git
 $ cd forte
 $ npm i -d
 ```
