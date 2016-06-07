@@ -1,0 +1,87 @@
+.banner
+  height 575px
+  background-color color_light-bg
+  padding-top 50px
+  position relative
+  &__tabs
+    width 100%
+    max-width 970px
+    margin 0 auto
+    display flex
+    margin-bottom 120px
+    &_item
+      font-size 15px
+      font-family "Raleway"
+      color color_gray-text
+      text-transform uppercase
+      width 50%
+      text-align center
+      line-height 50px
+      border 1px solid color_gray-light
+      position relative
+      cursor pointer
+      transition .3s
+      &:hover
+        border-color color_sea
+      &:first-child
+        border-right-color transparent
+        &:hover
+          border-right-color transparent
+      &:last-child
+        border-left-color transparent
+        &:hover
+          border-left-color transparent
+      &--active:first-child
+        border 1px solid color_blue
+        &:after, &:before
+          content ''
+          position absolute
+          border 10px solid transparent
+          left calc(50% - 15px)
+          margin-top 0
+          z-index 2
+        &:before
+          border-top 10px solid color_blue
+          top 50px
+        &:after
+          border-top 10px solid color_light-bg
+          top 49px
+  &__body
+    float right
+    width 50%
+    padding-left 15px
+    &_img
+      position absolute
+      left calc(50% - 450px)
+      top 160px
+    &_title
+      display block
+      font-size 40px
+      font-family "Raleway"
+      color color_gray-text
+      line-height 0.675
+      text-transform capitalize
+      margin-bottom 30px
+    &_desc
+      font-size 15px
+      font-family "Raleway"
+      color color_gray-text-light
+      line-height 1.4
+      text-align left
+      display block
+      margin-bottom 30px
+    &_button
+      display inline-block
+      font-size 15px
+      font-family "Raleway"
+      text-transform uppercase
+      color color_blue
+      padding 18px 38px
+      border 2px solid color_blue
+      transition .3s
+      cursor pointer
+      &:hover
+        border-color color_sea
+        color color_sea
+
+

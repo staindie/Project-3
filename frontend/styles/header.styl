@@ -1,0 +1,45 @@
+.header
+  @extend .container
+  height header_height
+  &__logo
+    display inline-block
+    line-height header_height
+    &_img
+      width 41px
+      height 33px
+      margin-right 25px
+      vertical-align middle
+      letter-spacing 10px
+    &_text
+      font-size 22px
+      font-family "Raleway"
+      text-transform uppercase
+      color color_gray-text
+      font-weight 800
+      line-height 1.227
+      vertical-align middle
+      letter-spacing 10px
+  &__nav
+    display inline-block
+    line-height 100px
+    float right
+    &_item
+      display inline-block
+      font-size 15px
+      font-family "Raleway"
+      text-transform uppercase
+      color color_gray-text
+      line-height header_height - 2px
+      padding 0 10px
+      margin 0 10px
+      cursor pointer
+      border-bottom 2px solid transparent
+      &:first-child
+        margin-left 0
+      &:last-child
+        margin-right 0
+      &--active
+        color color_blue
+        border-bottom 2px solid color_blue
+
+

@@ -1,0 +1,105 @@
+.portfolio
+  background-color color_light-bg
+  padding-top 60px
+  &_title
+    font-size 40px
+    font-family "Raleway"
+    color color_gray-text
+    line-height 0.675
+    text-transform capitalize
+    text-align center
+    position relative
+    &:after
+      content ''
+      height 2px
+      width 170px
+      background-color color_blue
+      position absolute
+      bottom -30px
+      left calc(50% - 85px)
+  &_subtitle
+    font-size 13px
+    font-family "Raleway"
+    color color_gray-text-light
+    line-height 1.4
+    width 68%
+    text-align center
+    display block
+    margin 60px auto
+  &__tabs
+    display flex
+    justify-content center
+    &_item
+      padding 15px 30px
+      border 1px solid transparent
+      margin 0 10px
+      text-transform uppercase
+      font-family "Raleway"
+      cursor pointer
+      &--active
+        border 1px solid color_blue
+  &__wrap
+    margin-top 50px
+    margin-bottom 30px
+  &__photos
+    display flex
+    justify-content space-between
+  &__photo
+    width 25%
+    height 470px
+    padding 5px
+    overflow hidden
+    font-size 0
+    &_title
+      font-size 15px
+      font-family "Raleway"
+      color color_gray-text
+      line-height 1.8
+      text-transform uppercase
+      font-weight 500
+      position relative
+      margin-bottom 40px
+      &:after
+        content ''
+        height 2px
+        width 100px
+        background-color color_blue
+        position absolute
+        bottom -15px
+        left calc(50% - 50px)
+    &_subtitle
+      font-size 13px
+      font-family "Raleway"
+      color color_gray-text-light
+      line-height 1.4
+      display block
+      width 70%
+      margin 0 auto
+  &__desc
+    background color_white
+    width 102%
+    padding 30px 0 40px
+    text-align center
+  &__counters
+    background-color color_sea
+    padding 70px 0 60px
+    display flex
+    justify-content center
+  &__counter-item
+    margin 0 30px
+    text-align center
+    &_icon
+      height 70px
+    &_value
+      font-size 40px
+      font-family "Raleway"
+      color color_white
+      font-weight 100
+      margin 30px 0 15px
+    &_title
+      font-size 13px
+      font-family "Raleway"
+      color color_white
+      line-height 2.077
+      text-transform uppercase
+

@@ -6,6 +6,7 @@
   "license": "ISC",
   "repository": "https://github.com/divizionbyzero/forte.git",
   "dependencies": {
+    "angular": "^1.5.6",
     "gulp": "^3.9.1",
     "gulp-jade": "^1.1.0",
     "gulp-stylus": "^2.4.0",
