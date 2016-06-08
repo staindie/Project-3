@@ -12,6 +12,7 @@
     "gulp-stylus": "^2.4.0",
     "jade": "^1.11.0",
     "reset-css": "^2.0.2011012603",
+    "slick-carousel": "^1.6.0",
     "stylus": "^0.54.5"
   }
 }

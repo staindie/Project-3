@@ -1,9 +1,10 @@
 .header
-  @extend .container
   height header_height
+  transition .3s
   &__logo
     display inline-block
     line-height header_height
+    transition .3s
     &_img
       width 41px
       height 33px
@@ -21,10 +22,13 @@
       letter-spacing 10px
   &__nav
     display inline-block
-    line-height 100px
+    line-height header_height
     float right
+    transition .3s
     &_item
+      transition .3s
       display inline-block
+      vertical-align: top;
       font-size 15px
       font-family "Raleway"
       text-transform uppercase
@@ -34,6 +38,7 @@
       margin 0 10px
       cursor pointer
       border-bottom 2px solid transparent
+      text-decoration: none
       &:first-child
         margin-left 0
       &:last-child
@@ -42,4 +47,27 @@
         color color_blue
         border-bottom 2px solid color_blue
 
+.fixed
+  position: fixed
+  width: 100%;
+  background: white;
+  z-index: 1;
+  height: header_height--fixed
+  box-shadow: 0 1px 5px rgba(0,0,0,0.2);
+  .header
+    &__logo
+      line-height header_height--fixed
+    &__nav
+      height: header_height--fixed
+      &_item
+        line-height header_height--fixed - 2px
 
+@media all and (max-width: 990px)
+  .header
+    height: header_height--tablet
+    &__logo
+      line-height header_height--tablet
+    &__nav
+      height: header_height--tablet
+      &_item
+        line-height header_height--tablet - 2px

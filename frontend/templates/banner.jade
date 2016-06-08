@@ -1,11 +1,17 @@
-.banner
+.banner#home(ng-app="myApp",ng-controller="TabController as tab")
     .container
        .banner__tabs
-           .banner__tabs_item.banner__tabs_item--active start tour
-           .banner__tabs_item for all devices
-       .banner__body
+           .banner__tabs_item(ng-class="{'banner__tabs_item--active':tab.isSet(1)}",ng-click="tab.setTab(1)") start tour
+           .banner__tabs_item(ng-class="{'banner__tabs_item--active':tab.isSet(2)}",ng-click="tab.setTab(2)") for all devices
+       .banner__body.a(ng-show="tab.isSet(1)")
            img.banner__body_img(src='images/phones.png')
            span.banner__body_title fully responsive
            span.banner__body_desc Eum cu tantas legere complectitur, hinc utamur ea eam. Lorem ipsum dolor sit amet, volumus temporibus definitionem id ius, vel ut magna timeam appareat, movet timeam maiorum an ius.
                | Sea libris dictas lucilius et. Ne cibo urbanitas pri, qui ad populo accusamus. Quod congue ea ius, nisl aperiri sit ut.
            a.banner__body_button start tour
+       .banner__body.b(ng-show="tab.isSet(2)")
+           span.banner__body_title for all devices
+           span.banner__body_desc Eum cu tantas legere complectitur, hinc utamur ea eam. Lorem ipsum dolor sit amet, volumus temporibus definitionem id ius, vel ut magna timeam appareat, movet timeam maiorum an ius.
+               | Sea libris dictas lucilius et. Ne cibo urbanitas pri, qui ad populo accusamus. Quod congue ea ius, nisl aperiri sit ut.
+           a.banner__body_button start tour
+           img.banner__body_img(src='images/phones.png')

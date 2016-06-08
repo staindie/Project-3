@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <link rel="apple-touch-icon" sizes="57x57" href="images/favicons/apple-touch-icon-57x57.png">
@@ -14,28 +14,38 @@
     <meta name="theme-color" content="#ffffff">
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,300,800" rel="stylesheet" type="text/css">
     <link href="../node_modules/reset-css/reset.css" rel="stylesheet" type="text/css">
+    <link href="../node_modules/slick-carousel/slick/slick.css" rel="stylesheet" type="text/css">
+    <link href="../node_modules/slick-carousel/slick/slick-theme.css" rel="stylesheet" type="text/css">
     <link href="style.css" rel="stylesheet" type="text/css">
     <script src="../node_modules/angular/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="../node_modules/slick-carousel/slick/slick.min.js"></script>
+    <script src="scripts/scripts.js"></script>
     <meta name="viewport" content="width=device-width">
     <title>K E T</title>
   </head>
   <body>
-    <header class="header"><a class="header__logo"><img src="images/logo.png" class="header__logo_img"><span class="header__logo_text">ket</span></a>
-      <div class="header__nav"><a class="header__nav_item header__nav_item--active">home</a><a class="header__nav_item">services</a><a class="header__nav_item">portfolio</a><a class="header__nav_item">contacts</a></div>
+    <header id="nav" class="header">
+      <div class="container"><a class="header__logo"><img src="images/logo.png" class="header__logo_img"><span class="header__logo_text">ket</span></a>
+        <div id="nav-tabs" class="header__nav"><a href="#home" class="header__nav_item header__nav_item--active">home</a><a href="#services" class="header__nav_item">services</a><a href="#portf" class="header__nav_item">portfolio</a><a href="#contacts" class="header__nav_item">contacts</a></div>
+      </div>
     </header>
-    <content>
-      <div class="banner">
+    <content class="content">
+      <div id="home" ng-app="myApp" ng-controller="TabController as tab" class="banner">
         <div class="container">
           <div class="banner__tabs">
-            <div class="banner__tabs_item banner__tabs_item--active">start tour</div>
-            <div class="banner__tabs_item">for all devices</div>
+            <div ng-class="{'banner__tabs_item--active':tab.isSet(1)}" ng-click="tab.setTab(1)" class="banner__tabs_item">start tour</div>
+            <div ng-class="{'banner__tabs_item--active':tab.isSet(2)}" ng-click="tab.setTab(2)" class="banner__tabs_item">for all devices</div>
           </div>
-          <div class="banner__body"><img src="images/phones.png" class="banner__body_img"><span class="banner__body_title">fully responsive</span><span class="banner__body_desc">
+          <div ng-show="tab.isSet(1)" class="banner__body a"><img src="images/phones.png" class="banner__body_img"><span class="banner__body_title">fully responsive</span><span class="banner__body_desc">
               Eum cu tantas legere complectitur, hinc utamur ea eam. Lorem ipsum dolor sit amet, volumus temporibus definitionem id ius, vel ut magna timeam appareat, movet timeam maiorum an ius.
               Sea libris dictas lucilius et. Ne cibo urbanitas pri, qui ad populo accusamus. Quod congue ea ius, nisl aperiri sit ut.</span><a class="banner__body_button">start tour</a></div>
+          <div ng-show="tab.isSet(2)" class="banner__body b"><span class="banner__body_title">for all devices</span><span class="banner__body_desc">
+              Eum cu tantas legere complectitur, hinc utamur ea eam. Lorem ipsum dolor sit amet, volumus temporibus definitionem id ius, vel ut magna timeam appareat, movet timeam maiorum an ius.
+              Sea libris dictas lucilius et. Ne cibo urbanitas pri, qui ad populo accusamus. Quod congue ea ius, nisl aperiri sit ut.</span><a class="banner__body_button">start tour</a><img src="images/phones.png" class="banner__body_img"></div>
         </div>
       </div>
-      <div class="timeline">
+      <div id="services" class="timeline">
         <ul data-scroll-effect="default-effect" class="flik-timeline flik-timeline-1 timeline__wrap">
           <li data-date="September 2015" class="event timeline__item">
             <h3 data-title="We Reach The Top" class="timeline__item_title">We Reach The Top</h3>
@@ -55,7 +65,7 @@
           </li>
         </ul>
       </div>
-      <div class="portfolio">
+      <div id="portf" class="portfolio">
         <div class="container">
           <div class="portfolio_title">our portfolio</div>
           <div class="portfolio_subtitle">Eum cu tantas legere complectitur, hinc utamur ea eam. Eum patrioque mnesarchum eu, diam erant convenire et vis. Et essent evertitur sea, vis cu ubique referrentur, sed eu dicant expetendis.</div>
@@ -67,7 +77,11 @@
           </div>
         </div>
         <div class="portfolio__wrap">
-          <div class="portfolio__photos">
+          <div class="portfolio__photos center"><a class="portfolio__photo"><img src="images/img.jpg" class="portfolio__photo_image">
+              <div class="portfolio__desc">
+                <div class="portfolio__photo_title">awesome photo</div>
+                <div class="portfolio__photo_subtitle">Eum cu tantas legere complectitur, hinc utamu</div>
+              </div></a>
             <div class="portfolio__photo"><img src="images/img.jpg" class="portfolio__photo_image">
               <div class="portfolio__desc">
                 <div class="portfolio__photo_title">awesome photo</div>
@@ -102,25 +116,25 @@
         </div>
         <div class="portfolio__counters">
           <div class="portfolio__counter-item"><img src="images/icon-projects.png" class="portfolio__counter-item_icon">
-            <div class="portfolio__counter-item_value">2151</div>
+            <div id="value1" class="portfolio__counter-item_value">2151</div>
             <div class="portfolio__counter-item_title">completed projects</div>
           </div>
           <div class="portfolio__counter-item"><img src="images/icon-click.png" class="portfolio__counter-item_icon">
-            <div class="portfolio__counter-item_value">2151</div>
+            <div id="value2" class="portfolio__counter-item_value">2151</div>
             <div class="portfolio__counter-item_title">completed projects</div>
           </div>
           <div class="portfolio__counter-item"><img src="images/icon-mails.png" class="portfolio__counter-item_icon">
-            <div class="portfolio__counter-item_value">2151</div>
+            <div id="value3" class="portfolio__counter-item_value">2151</div>
             <div class="portfolio__counter-item_title">completed projects</div>
           </div>
           <div class="portfolio__counter-item"><img src="images/icon-jokes.png" class="portfolio__counter-item_icon">
-            <div class="portfolio__counter-item_value">2151</div>
+            <div id="value4" class="portfolio__counter-item_value">2151</div>
             <div class="portfolio__counter-item_title">completed projects</div>
           </div>
         </div>
       </div>
     </content>
-    <footer class="footer">
+    <footer id="contacts" class="footer">
       <div class="footer__container clearfix">
         <div class="footer_title">contact us</div>
         <div class="footer_subtitle">Eum cu tantas legere complectitur, hinc utamur ea eam. Eum patrioque mnesarchum eu, diam erant convenire et vis. Et essent evertitur sea, vis cu ubique referrentur, sed eu dicant expetendis.</div>
