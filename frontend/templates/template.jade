@@ -16,12 +16,11 @@ html(lang='en')
        link(href='../node_modules/reset-css/reset.css', rel='stylesheet', type='text/css')
        link(href='../node_modules/slick-carousel/slick/slick.css', rel='stylesheet', type='text/css')
        link(href='../node_modules/slick-carousel/slick/slick-theme.css', rel='stylesheet', type='text/css')
+       link(href='../node_modules/ng-dialog/css/ngDialog.css', rel='stylesheet', type='text/css')
+       link(href='../node_modules/ng-dialog/css/ngDialog-theme-default.css', rel='stylesheet', type='text/css')
        link(href='style.css', rel='stylesheet', type='text/css')
-       script(src='../node_modules/angular/angular.min.js')
-       script(src='https://code.jquery.com/jquery-1.12.4.min.js', integrity='sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=', crossorigin='anonymous')
-       script(src='../node_modules/slick-carousel/slick/slick.min.js')
-       script(src='scripts/scripts.js')
        meta(name="viewport", content="width=device-width")
        title K E T
-   body
+   body(ng-app="myApp",ng-controller="TabController as tab")
        block content
+

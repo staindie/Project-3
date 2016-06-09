@@ -16,22 +16,25 @@
     <link href="../node_modules/reset-css/reset.css" rel="stylesheet" type="text/css">
     <link href="../node_modules/slick-carousel/slick/slick.css" rel="stylesheet" type="text/css">
     <link href="../node_modules/slick-carousel/slick/slick-theme.css" rel="stylesheet" type="text/css">
+    <link href="../node_modules/ng-dialog/css/ngDialog.css" rel="stylesheet" type="text/css">
+    <link href="../node_modules/ng-dialog/css/ngDialog-theme-default.css" rel="stylesheet" type="text/css">
     <link href="style.css" rel="stylesheet" type="text/css">
-    <script src="../node_modules/angular/angular.min.js"></script>
-    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
-    <script src="../node_modules/slick-carousel/slick/slick.min.js"></script>
-    <script src="scripts/scripts.js"></script>
     <meta name="viewport" content="width=device-width">
     <title>K E T</title>
   </head>
-  <body>
+  <body ng-app="myApp" ng-controller="TabController as tab">
     <header id="nav" class="header">
       <div class="container"><a class="header__logo"><img src="images/logo.png" class="header__logo_img"><span class="header__logo_text">ket</span></a>
-        <div id="nav-tabs" class="header__nav"><a href="#home" class="header__nav_item header__nav_item--active">home</a><a href="#services" class="header__nav_item">services</a><a href="#portf" class="header__nav_item">portfolio</a><a href="#contacts" class="header__nav_item">contacts</a></div>
+        <div id="nav-tabs" class="header__nav"><a href="#home" class="header__nav_item header__nav_item--active">home</a><a href="#services" class="header__nav_item">services</a><a href="#portf" class="header__nav_item">portfolio</a><a href="#contacts" class="header__nav_item">contacts</a></div><a href="javascript:void(0)" class="icon">
+          <div class="hamburger">
+            <div class="menui top-menu"></div>
+            <div class="menui mid-menu"></div>
+            <div class="menui bottom-menu"></div>
+          </div></a>
       </div>
     </header>
     <content class="content">
-      <div id="home" ng-app="myApp" ng-controller="TabController as tab" class="banner">
+      <div id="home" class="banner">
         <div class="container">
           <div class="banner__tabs">
             <div ng-class="{'banner__tabs_item--active':tab.isSet(1)}" ng-click="tab.setTab(1)" class="banner__tabs_item">start tour</div>
@@ -46,22 +49,10 @@
         </div>
       </div>
       <div id="services" class="timeline">
-        <ul data-scroll-effect="default-effect" class="flik-timeline flik-timeline-1 timeline__wrap">
-          <li data-date="September 2015" class="event timeline__item">
-            <h3 data-title="We Reach The Top" class="timeline__item_title">We Reach The Top</h3>
-            <p data-date="September 2015" class="event-content timeline__item_desc">Lorem ipsum dolor sit amet, rebum dolore labores cu pri. Ferri iudico scripta ut eam, diceret euismod gubergren has eu, an quo tale vivendum. Ad quidam gubergren vituperatoribu<a class="timeline__item_readmore">read more</a></p>
-          </li>
-          <li data-date="September 2015" class="event timeline__item">
-            <h3 data-title="We Reach The Top" class="timeline__item_title">We Reach The Top</h3>
-            <p data-date="September 2015" class="event-content timeline__item_desc">Lorem ipsum dolor sit amet, rebum dolore labores cu pri. Ferri iudico scripta ut eam, diceret euismod gubergren has eu, an quo tale vivendum. Ad quidam gubergren vituperatoribu<a class="timeline__item_readmore">read more</a></p>
-          </li>
-          <li data-date="September 2015" class="event timeline__item">
-            <h3 data-title="We Reach The Top" class="timeline__item_title">We Reach The Top</h3>
-            <p data-date="September 2015" class="event-content timeline__item_desc">Lorem ipsum dolor sit amet, rebum dolore labores cu pri. Ferri iudico scripta ut eam, diceret euismod gubergren has eu, an quo tale vivendum. Ad quidam gubergren vituperatoribu<a class="timeline__item_readmore">read more</a></p>
-          </li>
-          <li data-date="September 2015" class="event timeline__item">
-            <h3 data-title="We Reach The Top" class="timeline__item_title">We Reach The Top</h3>
-            <p data-date="September 2015" class="event-content timeline__item_desc">Lorem ipsum dolor sit amet, rebum dolore labores cu pri. Ferri iudico scripta ut eam, diceret euismod gubergren has eu, an quo tale vivendum. Ad quidam gubergren vituperatoribu<a class="timeline__item_readmore">read more</a></p>
+        <ul class="flik-timeline flik-timeline-1 timeline__wrap">
+          <li ng-repeat="line in timelineData" data-date="{{line.data}}" class="event timeline__item">
+            <h3 data-title="{{line.title}}" class="timeline__item_title">{{line.subtitle}}</h3>
+            <p data-date="{{line.data}}" class="event-content timeline__item_desc">'{{line.description}}<a class="timeline__item_readmore">read more</a></p>
           </li>
         </ul>
       </div>
@@ -70,66 +61,24 @@
           <div class="portfolio_title">our portfolio</div>
           <div class="portfolio_subtitle">Eum cu tantas legere complectitur, hinc utamur ea eam. Eum patrioque mnesarchum eu, diam erant convenire et vis. Et essent evertitur sea, vis cu ubique referrentur, sed eu dicant expetendis.</div>
           <div class="portfolio__tabs">
-            <div class="portfolio__tabs_item portfolio__tabs_item--active">all</div>
-            <div class="portfolio__tabs_item">web</div>
-            <div class="portfolio__tabs_item">photography</div>
-            <div class="portfolio__tabs_item">graphic design</div>
+            <div ng-click="sort('')" class="portfolio__tabs_item portfolio__tabs_item--active">all</div>
+            <div ng-click="sort('web')" class="portfolio__tabs_item">web</div>
+            <div ng-click="sort('photo')" class="portfolio__tabs_item">photography</div>
+            <div ng-click="sort('graphic')" class="portfolio__tabs_item">graphic design</div>
           </div>
         </div>
         <div class="portfolio__wrap">
-          <div class="portfolio__photos center"><a class="portfolio__photo"><img src="images/img.jpg" class="portfolio__photo_image">
+          <!--slick(infinite="true", slides-to-show="3",slides-to-scroll="1", class="showplaces-slick", init-onload="true", data="products", center-mode="true", center-padding="-40px", adaptive-height="true")-->
+          <div class="portfolio__photos center"><a ng-repeat="product in products | filter : filters" products="each" class="portfolio__photo"><img src="{{product.src}}" ng-click="clickToOpen(product.src)" class="portfolio__photo_image">
               <div class="portfolio__desc">
-                <div class="portfolio__photo_title">awesome photo</div>
-                <div class="portfolio__photo_subtitle">Eum cu tantas legere complectitur, hinc utamu</div>
-              </div></a>
-            <div class="portfolio__photo"><img src="images/img.jpg" class="portfolio__photo_image">
-              <div class="portfolio__desc">
-                <div class="portfolio__photo_title">awesome photo</div>
-                <div class="portfolio__photo_subtitle">Eum cu tantas legere complectitur, hinc utamu</div>
-              </div>
-            </div>
-            <div class="portfolio__photo"><img src="images/img.jpg" class="portfolio__photo_image">
-              <div class="portfolio__desc">
-                <div class="portfolio__photo_title">awesome photo</div>
-                <div class="portfolio__photo_subtitle">Eum cu tantas legere complectitur, hinc utamu</div>
-              </div>
-            </div>
-            <div class="portfolio__photo"><img src="images/img.jpg" class="portfolio__photo_image">
-              <div class="portfolio__desc">
-                <div class="portfolio__photo_title">awesome photo</div>
-                <div class="portfolio__photo_subtitle">Eum cu tantas legere complectitur, hinc utamu</div>
-              </div>
-            </div>
-            <div class="portfolio__photo"><img src="images/img.jpg" class="portfolio__photo_image">
-              <div class="portfolio__desc">
-                <div class="portfolio__photo_title">awesome photo</div>
-                <div class="portfolio__photo_subtitle">Eum cu tantas legere complectitur, hinc utamu</div>
-              </div>
-            </div>
-            <div class="portfolio__photo"><img src="images/img.jpg" class="portfolio__photo_image">
-              <div class="portfolio__desc">
-                <div class="portfolio__photo_title">awesome photo</div>
-                <div class="portfolio__photo_subtitle">Eum cu tantas legere complectitur, hinc utamu</div>
-              </div>
-            </div>
-          </div>
+                <div class="portfolio__photo_title">{{product.name}}</div>
+                <div class="portfolio__photo_subtitle">{{product.description}}</div>
+              </div></a></div>
         </div>
         <div class="portfolio__counters">
-          <div class="portfolio__counter-item"><img src="images/icon-projects.png" class="portfolio__counter-item_icon">
-            <div id="value1" class="portfolio__counter-item_value">2151</div>
-            <div class="portfolio__counter-item_title">completed projects</div>
-          </div>
-          <div class="portfolio__counter-item"><img src="images/icon-click.png" class="portfolio__counter-item_icon">
-            <div id="value2" class="portfolio__counter-item_value">2151</div>
-            <div class="portfolio__counter-item_title">completed projects</div>
-          </div>
-          <div class="portfolio__counter-item"><img src="images/icon-mails.png" class="portfolio__counter-item_icon">
-            <div id="value3" class="portfolio__counter-item_value">2151</div>
-            <div class="portfolio__counter-item_title">completed projects</div>
-          </div>
-          <div class="portfolio__counter-item"><img src="images/icon-jokes.png" class="portfolio__counter-item_icon">
-            <div id="value4" class="portfolio__counter-item_value">2151</div>
-            <div class="portfolio__counter-item_title">completed projects</div>
+          <div ng-repeat="counter in counters" class="portfolio__counter-item"><img src="{{counter.icon}}" class="portfolio__counter-item_icon">
+            <div id="value1" class="portfolio__counter-item_value">{{counter.value}}</div>
+            <div class="portfolio__counter-item_title">{{counter.description}}</div>
           </div>
         </div>
       </div>
@@ -151,5 +100,12 @@
         </div><a class="footer__form_submit">send message</a><span class="footer__copyright">&copy; 2014 -<a class="footer__copyright_link">Kat</a>All Right Reserved</span>
       </div>
     </footer>
+    <script src="../node_modules/angular/angular.min.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <script src="../node_modules/slick-carousel/slick/slick.js"></script>
+    <script src="../node_modules/angularslick/dist/slick.js"></script>
+    <script src="scripts/hamburgler/hamburgler.js"></script>
+    <script src="../node_modules/ng-dialog/js/ngDialog.js"></script>
+    <script src="scripts/scripts.js"></script>
   </body>
 </html>
