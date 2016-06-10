@@ -9,7 +9,7 @@
     max-width 970px
     margin 0 auto
     display flex
-    margin-bottom 120px
+    margin-bottom 85px
     &_item
       font-size 15px
       font-family "Raleway"
@@ -50,24 +50,29 @@
           border-top 10px solid color_light-bg
           top 49px
   &__body
-    float right
-    width 50%
+    width 100%
+    display: flex
     padding-left 15px
     opacity: 1
     transition: opacity .3s
     visibility: visible
-    &.ng-hide
-      opacity: 0
-      visibility: hidden
+    max-width: 1000px
+    margin: 0 auto
+    &_half
+      width: 50%
+      &--right
+        span
+          text-align: right
+        a
+          float: right
     &.b
       float: left
       .banner__body_img
         right: calc(50% - 410px);
         left: auto
     &_img
-      position absolute
-      left calc(50% - 450px)
-      top 160px
+      margin: 0 auto
+      display: block
     &_title
       display block
       font-size 40px

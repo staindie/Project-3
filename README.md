@@ -11,10 +11,12 @@ $ npm i -g gulp
 ```
 
 ```sh
-$ git clone [https://github.com/divizionbyzero/forte.git] https://github.com/divizionbyzero/forte.git
+$ git clone [https://github.com/divizionbyzero/forte.git] (https://github.com/divizionbyzero/forte.git)
 $ cd forte
 $ npm i -d
 ```
+
+After all dependencies will be install, you can run index.html and see my test project
 
 ### Plugins
 
