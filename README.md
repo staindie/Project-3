@@ -14,9 +14,10 @@ $ npm i -g gulp
 $ git clone [https://github.com/divizionbyzero/forte.git]
 $ cd forte
 $ npm i -d
+$ gulp watch (if you want to change something)
 ```
 
-After all dependencies will be install, you can run index.html and see my test project
+After all dependencies will be install, and watcher is started, you can run index.html, see and change my test project
 
 ### Demo
 Demo is [here](http://alena.kernazhytskaya.s3-website-us-west-2.amazonaws.com/)
