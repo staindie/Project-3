@@ -48,10 +48,12 @@
       &--active
         color color_blue
         border-bottom 2px solid color_blue
+        &:hover
+          opacity: .8
 
 .fixed
   position fixed
-  z-index 1
+  z-index 3
   width 100%
   height header_height--fixed
   background color_white
@@ -65,7 +67,9 @@
       &_item
         line-height header_height--fixed - 2px
 
-
+.fixed+.content
+  .banner
+    padding-top: 190px
 *{
   -webkit-tap-highlight-color: rgba(255,255,255,0);
   -webkit-tap-highlight-color: transparent; /* For some Androids */
@@ -154,7 +158,6 @@
 
 .mobilenav a:first-child
   margin-top 50px
-
 
 .mobilenav+.icon
   display block

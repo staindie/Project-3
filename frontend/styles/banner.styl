@@ -33,6 +33,7 @@
         border 1px solid color_blue !important
         &:hover
           border 1px solid color_blue !important
+          opacity: .8
         &:after, &:before
           content ''
           position absolute
@@ -50,7 +51,7 @@
     display: flex
     visibility: visible
     width 100%
-    max-width: 1000px
+    max-width: 970px
     margin: 0 auto
     padding-left 15px
     opacity: 1
@@ -75,7 +76,6 @@
       margin-bottom 30px
       color color_gray-text
       font-size 40px
-      line-height 0.675
       text-transform capitalize
     &_desc
       display block
@@ -96,3 +96,22 @@
       &:active
         opacity: .7
 
+@media all and (max-width: 990px)
+  .banner
+    &__tabs
+      max-width: 750px
+    &__body
+      max-width: 750px
+      &_img
+        width: 65%;
+
+@media all and (max-width: 768px)
+  .banner
+    &__tabs
+      max-width: 420px
+    &__body
+      max-width: 420px
+      &_title
+        font-size 35px
+      &_img
+        width: 65%

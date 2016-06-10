@@ -67,7 +67,7 @@
       line-height 1.8
       text-transform uppercase
       font-weight 500
-      &after
+      &:after
         content ''
         position absolute
         bottom -15px
@@ -112,3 +112,27 @@
   margin-top 20px
 .popup-img
   width 100%
+
+@media all and (max-width: 990px)
+  .portfolio
+    &__counter-item
+      margin: 0 10px
+      &_value
+        font-size 35px
+      &_title
+        font-size: 12px
+      &_icon
+        height: 60px
+
+
+@media all and (max-width: 768px)
+  .portfolio
+    &__counter-item
+      &_value
+        font-size 30px
+      &_title
+        font-size: 11px
+      &_icon
+        height: 50px
+
+

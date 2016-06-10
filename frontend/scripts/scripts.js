@@ -12,15 +12,16 @@
 
         $scope.products = [
             {name : "awesome photo 1", src : 'images/img.jpg', category : "graphic", description : "Eum cu tantas legere complectitur, hinc utamu"},
-            {name : "awesome photo 2", src : 'images/img.jpg', category : "web", description : "Eum cu tantas legere complectitur, hinc utamu"},
-            {name : "awesome photo 3", src : 'images/img.jpg', category : "web", description : "Eum cu tantas legere complectitur, hinc utamu"},
-            {name : "awesome photo 4", src : 'images/img.jpg', category : "web", description : "Eum cu tantas legere complectitur, hinc utamu"},
-            {name : "awesome photo 5", src : 'images/img.jpg', category : "photo", description : "Eum cu tantas legere complectitur, hinc utamu"},
-            {name : "awesome photo 6", src : 'images/img.jpg', category : "photo", description : "Eum cu tantas legere complectitur, hinc utamu"},
-            {name : "awesome photo 7", src : 'images/img.jpg', category : "photo", description : "Eum cu tantas legere complectitur, hinc utamu"},
-            {name : "awesome photo 8", src : 'images/img.jpg', category : "graphic", description : "Eum cu tantas legere complectitur, hinc utamu"},
+            {name : "awesome photo 3", src : 'images/img2.jpg', category : "web", description : "Eum cu tantas legere complectitur, hinc utamu"},
+            {name : "awesome photo 4", src : 'images/img3.jpg', category : "web", description : "Eum cu tantas legere complectitur, hinc utamu"},
+            {name : "awesome photo 5", src : 'images/img4.jpg', category : "photo", description : "Eum cu tantas legere complectitur, hinc utamu"},
+            {name : "awesome photo 6", src : 'images/img5.jpg', category : "photo", description : "Eum cu tantas legere complectitur, hinc utamu"},
+            {name : "awesome photo 7", src : 'images/img6.jpg', category : "photo", description : "Eum cu tantas legere complectitur, hinc utamu"},
+            {name : "awesome photo 8", src : 'images/img7.jpg', category : "graphic", description : "Eum cu tantas legere complectitur, hinc utamu"},
             {name : "awesome photo 9", src : 'images/img.jpg', category : "graphic", description : "Eum cu tantas legere complectitur, hinc utamu"},
-            {name : "awesome photo 10", src : 'images/img.jpg', category : "graphic", description : "Eum cu tantas legere complectitur, hinc utamu"}
+            {name : "awesome photo 3", src : 'images/img2.jpg', category : "web", description : "Eum cu tantas legere complectitur, hinc utamu"},
+            {name : "awesome photo 3", src : 'images/img3.jpg', category : "web", description : "Eum cu tantas legere complectitur, hinc utamu"}
+
         ];
 
         $scope.timelineData = [
@@ -101,13 +102,19 @@
 
         //top-menu for mobile
         var topNav =  $('#nav-tabs');
-        $( window ).resize(function(){
+        function changeMenu() {
             if($(window).width() < 768) {
                 topNav.addClass('mobilenav');
+                topNav.css('display', 'none');
             }
             else {
                 topNav.removeClass('mobilenav');
+                topNav.css('display', 'block');
             }
+        }
+        changeMenu();
+        $( window ).resize(function(){
+            changeMenu();
         });
 
         //smooth scroll
