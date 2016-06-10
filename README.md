@@ -11,7 +11,7 @@ $ npm i -g gulp
 ```
 
 ```sh
-$ git clone [https://github.com/divizionbyzero/forte.git] (https://github.com/divizionbyzero/forte.git)
+$ git clone [https://github.com/divizionbyzero/forte.git]
 $ cd forte
 $ npm i -d
 ```
@@ -22,4 +22,5 @@ After all dependencies will be install, you can run index.html and see my test p
 
 Project is currently extended with the following plugins
 
-*
+* [slick-carousel](http://kenwheeler.github.io/slick/)
+* [ng-dialog](https://github.com/likeastore/ngDialog)
