@@ -18,6 +18,6 @@
     "stylus": "^0.54.5"
   },
   "devDependencies": {
-    "gulp-concat": "^2.6.0",
+    "gulp-concat": "^2.6.0"
   }
 }

@@ -55,10 +55,6 @@ fabric.properties
 # modules.xml
 
 
-### Stylus ###
-*.css
-
-
 ### Node ###
 # Logs
 logs
