@@ -70,10 +70,6 @@
 .fixed+.content
   .banner
     padding-top: 190px
-*{
-  -webkit-tap-highlight-color: rgba(255,255,255,0);
-  -webkit-tap-highlight-color: transparent; /* For some Androids */
-}
 
 .top-animate
   background color_black !important
@@ -129,6 +125,7 @@
   top 0
   right 0
   display: none
+  cursor: pointer
 
 
 .mobilenav
@@ -165,7 +162,7 @@
 .mobilenav .header__nav_item--active
   border-bottom: none
 
-@media all and (max-width: 990px)
+@media all and (max-width: width_md)
   .header
     height: header_height--tablet
     &__logo

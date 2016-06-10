@@ -5,7 +5,6 @@
     position relative
     color color_gray-text
     font-size 40px
-    line-height 0.675
     text-transform capitalize
     text-align center
     &:after
@@ -125,13 +124,18 @@
         height: 60px
 
 
-@media all and (max-width: 768px)
+@media all and (max-width: width_sm)
   .portfolio
+    &__tabs
+      &_item
+        padding 10px 15px
+        margin 0 5px
+        font-size 13px
     &__counter-item
       &_value
         font-size 30px
       &_title
-        font-size: 11px
+        font-size 11px
       &_icon
         height: 50px
 

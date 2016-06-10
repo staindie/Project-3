@@ -1,7 +1,6 @@
 .banner
   position relative
-  height 575px
-  padding-top 50px
+  padding 50px 0
   background-color color_light-bg
   animation bounceInUp 1s
   &__tabs
@@ -96,7 +95,7 @@
       &:active
         opacity: .7
 
-@media all and (max-width: 990px)
+@media all and (max-width: width_md)
   .banner
     &__tabs
       max-width: 750px
@@ -105,7 +104,7 @@
       &_img
         width: 65%;
 
-@media all and (max-width: 768px)
+@media all and (max-width: width_sm)
   .banner
     &__tabs
       max-width: 420px
@@ -115,3 +114,17 @@
         font-size 35px
       &_img
         width: 65%
+
+@media all and (max-width: width_xs)
+  .banner
+    &__body
+      max-width 300px
+      &_title
+        font-size 20px
+      &_desc
+        font-size 12px
+      &_button
+        padding 10px 20px
+    &__tabs
+      max-width 300px
+      margin 0 auto 45px

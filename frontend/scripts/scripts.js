@@ -1,7 +1,7 @@
 (function () {
-    var app = angular.module('myApp', ['slick', 'ngDialog', 'counter']);
+    var app = angular.module('myApp', ['ngDialog']);
 
-    app.controller('TabController', function ($scope, ngDialog) {
+    app.controller('MainController',['$scope', 'ngDialog', function ($scope, ngDialog) {
         this.tab = 1;
         this.setTab = function (tabId) {
             this.tab = tabId;
@@ -21,7 +21,6 @@
             {name : "awesome photo 9", src : 'images/img.jpg', category : "graphic", description : "Eum cu tantas legere complectitur, hinc utamu"},
             {name : "awesome photo 3", src : 'images/img2.jpg', category : "web", description : "Eum cu tantas legere complectitur, hinc utamu"},
             {name : "awesome photo 3", src : 'images/img3.jpg', category : "web", description : "Eum cu tantas legere complectitur, hinc utamu"}
-
         ];
 
         $scope.timelineData = [
@@ -46,7 +45,7 @@
         $scope.clickToOpen = function (src) {
             ngDialog.open({ template: ' <div class="popup-wrap"><img  class="popup-img" src="'+ src +'" alt=""/></div>', className: 'ngdialog-theme-default', plain: true, width: '60%' });
         };
-    });
+    }]);
 
     function isScrolledIntoView(elem,offset) {
         var $elem = $(elem);
@@ -90,6 +89,7 @@
 
         var galleryClass = $('.center');
         var galleryFilters = $(".portfolio__tabs");
+
 
         //gallery initialize
         galleryClass.slick(slickSettings);

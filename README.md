@@ -18,6 +18,9 @@ $ npm i -d
 
 After all dependencies will be install, you can run index.html and see my test project
 
+### Demo
+Demo is [here](http://alena.kernazhytskaya.s3-website-us-west-2.amazonaws.com/)
+
 ### Tech
 
 This project uses a number of open source projects to work properly:
