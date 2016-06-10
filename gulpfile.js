@@ -3,6 +3,7 @@ var jade = require('gulp-jade');
 var stylus = require('gulp-stylus');
 var cleanCSS = require('gulp-clean-css');
 var uglify = require('gulp-uglify');
+var sourcemaps = require('gulp-sourcemaps');
 
 gulp.task('jade', function () {
     var YOUR_LOCALS = {};
@@ -16,13 +17,17 @@ gulp.task('jade', function () {
 
 gulp.task('minify-css', function() {
     return gulp.src('frontend/styles/*.css')
+        .pipe(sourcemaps.init())
         .pipe(cleanCSS({compatibility: 'ie8'}))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest('frontend'));
 });
 
 gulp.task('compress', function() {
     return gulp.src('frontend/scripts/*.js')
+        .pipe(sourcemaps.init())
         .pipe(uglify({mangle: false}))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest('frontend'));
 });
 

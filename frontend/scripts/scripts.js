@@ -57,7 +57,6 @@
         return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
     }
 
-
     angular.element(document).ready(function() {
 
         //gallery settings
