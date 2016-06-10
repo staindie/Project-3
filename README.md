@@ -18,6 +18,18 @@ $ npm i -d
 
 After all dependencies will be install, you can run index.html and see my test project
 
+### Tech
+
+This project uses a number of open source projects to work properly:
+
+* [AngularJS] - HTML enhanced for web apps!
+* [node.js] - evented I/O for the backend
+* [Gulp] - the streaming build system
+* [jQuery] - JavaScript library
+* [Jade] - Node template engine
+* [Stylus] - CSS preprocessor
+
+
 ### Plugins
 
 Project is currently extended with the following plugins

@@ -1,13 +1,11 @@
 (function () {
-    var app = angular.module('myApp', ['slick', 'ngDialog']);
+    var app = angular.module('myApp', ['slick', 'ngDialog', 'counter']);
 
     app.controller('TabController', function ($scope, ngDialog) {
         this.tab = 1;
-
         this.setTab = function (tabId) {
             this.tab = tabId;
         };
-
         this.isSet = function (tabId) {
             return this.tab === tabId;
         };
@@ -38,19 +36,18 @@
             {value : '4670', description : "mails sended and received", icon: "images/icon-mails.png"},
             {value : '939', description : "jokes tolds", icon: "images/icon-jokes.png"}
         ];
-        $scope.filters = {};
 
+        $scope.filters = {};
         $scope.sort = function (value){
             $scope.filters.category = value;
         };
+        //open modal window
         $scope.clickToOpen = function (src) {
             ngDialog.open({ template: ' <div class="popup-wrap"><img  class="popup-img" src="'+ src +'" alt=""/></div>', className: 'ngdialog-theme-default', plain: true, width: '60%' });
         };
-
     });
 
-    function isScrolledIntoView(elem,offset)
-    {
+    function isScrolledIntoView(elem,offset) {
         var $elem = $(elem);
         var $window = $(window);
         var docViewTop = $window.scrollTop();
@@ -60,8 +57,10 @@
         return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
     }
 
+
     angular.element(document).ready(function() {
 
+        //gallery settings
         var slickSettings = {
             centerMode: true,
             centerPadding: '150px',
@@ -88,43 +87,63 @@
             ]
         };
 
+        var galleryClass = $('.center');
+        var galleryFilters = $(".portfolio__tabs");
+
+        //gallery initialize
+        galleryClass.slick(slickSettings);
+        galleryFilters.find("div").click(function(){
+            galleryClass.slick('unslick');
+            galleryClass.slick(slickSettings);
+            galleryFilters.find("div").removeClass("portfolio__tabs_item--active");//remove if something was selected
+            $(this).addClass("portfolio__tabs_item--active");//add a selected class
+        });
+
+        //top-menu for mobile
+        var topNav =  $('#nav-tabs');
         $( window ).resize(function(){
             if($(window).width() < 768) {
-                $('#nav-tabs').addClass('mobilenav');
+                topNav.addClass('mobilenav');
             }
             else {
-                $('#nav-tabs').removeClass('mobilenav');
+                topNav.removeClass('mobilenav');
             }
         });
-        $("#nav-tabs").find("a").click( function(){ // ловим клик по ссылке с классом go_to
-            var scroll_el = $(this).attr('href'); // возьмем содержимое атрибута href, должен быть селектором, т.е. например начинаться с # или .
-            if ($(scroll_el).length != 0) { // проверим существование элемента чтобы избежать ошибки
-                $('html, body').animate({ scrollTop: $(scroll_el).offset().top }, 500); // анимируем скроолинг к элементу scroll_el
+
+        //smooth scroll
+        topNav.find("a").click( function(){
+            var scroll_el = $(this).attr('href');
+            if ($(scroll_el).length !== 0) {
+                $('html, body').animate({ scrollTop: $(scroll_el).offset().top }, 500);
             }
-            return false; // выключаем стандартное действие
         });
 
-        $('.center').slick(slickSettings);
-
-        var navpos = $('#nav').offset();
+        //top-menu behavior
+        var nav = $('#nav');
+        var navpos = nav.offset();
 
         $(window).bind('scroll', function() {
             if ($(window).scrollTop() > navpos.top) {
-                $('#nav').addClass('fixed');
+                nav.addClass('fixed');
             }
             else {
-                $('#nav').removeClass('fixed');
+                nav.removeClass('fixed');
             }
 
             $.each(['#home','#services', '#portf', '#contacts' ],function(key, val){
                     if (isScrolledIntoView(val,300)) {
                         var nav_id = '#' + $(val).attr('id');
-                        $("#nav-tabs").find("a").removeClass("header__nav_item--active");//remove if something was selected
+                        topNav.find("a").removeClass("header__nav_item--active");//remove if something was selected
                         $('a[href="' + nav_id + '"]').addClass("header__nav_item--active");//add a selected class
                     }
                 }
-
             );
+            topNav.find("a").click(function(){
+                topNav.find("a").removeClass("header__nav_item--active");//remove if something was selected
+                $(this).addClass("header__nav_item--active");//add a selected class
+            });
+
+            //timeline elements appearance
             $( ".timeline__item" ).each(function() {
                 if (isScrolledIntoView(this,0)) {
                     $(this).removeClass('hidden-elem');
@@ -136,17 +155,5 @@
                 }
             });
         });
-
-        $("#nav-tabs").find("a").click(function(){
-            $("#nav-tabs").find("a").removeClass("header__nav_item--active");//remove if something was selected
-            $(this).addClass("header__nav_item--active");//add a selected class
-        });
-        $(".portfolio__tabs").find("div").click(function(){
-            $('.center').slick('unslick');
-            $('.center').slick(slickSettings);
-            $(".portfolio__tabs").find("div").removeClass("portfolio__tabs_item--active");//remove if something was selected
-            $(this).addClass("portfolio__tabs_item--active");//add a selected class
-        });
-
     });
 })();

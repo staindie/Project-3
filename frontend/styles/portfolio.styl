@@ -1,115 +1,114 @@
 .portfolio
-  background-color color_light-bg
   padding-top 60px
+  background-color color_light-bg
   &_title
-    font-size 40px
-    font-family "Raleway"
+    position relative
     color color_gray-text
+    font-size 40px
     line-height 0.675
     text-transform capitalize
     text-align center
-    position relative
     &:after
       content ''
-      height 2px
-      width 170px
-      background-color color_blue
       position absolute
       bottom -30px
       left calc(50% - 85px)
+      height 2px
+      width 170px
+      background-color color_blue
   &_subtitle
-    font-size 13px
-    font-family "Raleway"
-    color color_gray-text-light
-    line-height 1.4
-    width 68%
-    text-align center
     display block
+    width 68%
     margin 60px auto
+    color color_gray-text-light
+    font-size 13px
+    line-height 1.4
+    text-align center
   &__tabs
     display flex
     justify-content center
     &_item
+      margin 0 10px
       padding 15px 30px
       border 1px solid transparent
-      margin 0 10px
       text-transform uppercase
-      font-family "Raleway"
       cursor pointer
+      transition .3s
+      &:hover
+        color color_blue
       &--active
         border 1px solid color_blue
+        &:hover
+          color color_black
+          opacity .9
   &__wrap
+    overflow hidden
     margin-top 50px
     margin-bottom 30px
-    overflow: hidden
   &__photos
     display flex
     justify-content space-between
   &__photo
-    padding 5px
+    display block
     overflow hidden
+    padding 5px
     font-size 0
-    display: block
-    text-decoration: none
+    text-decoration none
     &:focus
-      outline-color: color_blue
+      outline-color color_blue
     &_image
-      width: 100%
-      cursor: pointer
+      width 100%
+      cursor pointer
     &_title
+      position relative
+      margin-bottom 40px
       font-size 15px
-      font-family "Raleway"
       color color_gray-text
       line-height 1.8
       text-transform uppercase
       font-weight 500
-      position relative
-      margin-bottom 40px
-      &:after
+      &after
         content ''
-        height 2px
-        width 100px
-        background-color color_blue
         position absolute
         bottom -15px
         left calc(50% - 50px)
+        height 2px
+        width 100px
+        background-color color_blue
     &_subtitle
-      font-size 13px
-      font-family "Raleway"
-      color color_gray-text-light
-      line-height 1.4
       display block
       width 70%
       margin 0 auto
+      color color_gray-text-light
+      font-size 13px
+      line-height 1.4
   &__desc
     background color_white
     width 100%
     padding 30px 0 40px
     text-align center
   &__counters
-    background-color color_sea
-    padding 70px 0 60px
     display flex
     justify-content center
+    background-color color_sea
+    padding 70px 0 60px
   &__counter-item
     margin 0 30px
     text-align center
     &_icon
       height 70px
     &_value
-      font-size 40px
-      font-family "Raleway"
-      color color_white
-      font-weight 100
       margin 30px 0 15px
-    &_title
-      font-size 13px
-      font-family "Raleway"
       color color_white
+      font-size 40px
+      font-weight 100
+    &_title
+      color color_white
+      font-size 13px
       line-height 2.077
       text-transform uppercase
 
 .popup-wrap
-  margin-top: 20px
+  margin-top 20px
 .popup-img
-  width: 100%
+  width 100%

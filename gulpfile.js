@@ -1,14 +1,7 @@
 var gulp = require('gulp');
 var jade = require('gulp-jade');
 var stylus = require('gulp-stylus');
-var concat = require('gulp-concat');
 
-
-gulp.task('scripts', function() {
-    return gulp.src(['../node_modules/angular/angular.min.js', 'https://code.jquery.com/jquery-1.12.4.min.js', '../node_modules/slick-carousel/slick/slick.js'])
-        .pipe(concat('all.js'))
-        .pipe(gulp.dest('./dist/'));
-});
 
 gulp.task('jade', function () {
     var YOUR_LOCALS = {};

@@ -1,13 +1,11 @@
 .clearfix:before,
 .clearfix:after {
-  content ' ' /* 1 */
-  display table /* 2 */
+  content ' '
+  display table
 }
 
 .clearfix:after
   clear both
-
-
 
 @keyframes bounceInUp
   from,
@@ -29,15 +27,13 @@
   to
     transform: translate3d(0, 0, 0)
 
-
-
-//grid
-
+html, body
+  font-family "Raleway"
+  font-size 15px
 
 .container
   max-width 1150px
   margin 0 auto
-
 
 @media all and (max-width: 1200px)
   .container

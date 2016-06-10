@@ -18,6 +18,5 @@
    .portfolio__counters
        .portfolio__counter-item(ng-repeat= "counter in counters")
            img.portfolio__counter-item_icon(ng-src='{{counter.icon}}')
-           .portfolio__counter-item_value#value1 {{counter.value}}
+           .portfolio__counter-item_value {{counter.value}}
            .portfolio__counter-item_title {{counter.description}}
-
