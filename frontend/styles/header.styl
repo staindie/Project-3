@@ -1,5 +1,10 @@
 .header
+  position absolute
+  top 0
+  z-index 5
+  width 100%
   height header_height
+  background color_white
   transition .3s
   &__logo
     display inline-block
@@ -67,10 +72,6 @@
       &_item
         line-height header_height--fixed - 2px
 
-.fixed+.content
-  .banner
-    padding-top: 190px
-
 .top-animate
   background color_black !important
   top 13px !important
@@ -121,11 +122,12 @@
   padding 9px
   height 32px
   width 32px
-  margin 0
+  margin 5px 0 0
   top 0
   right 0
   display: none
   cursor: pointer
+  transition: .3s
 
 
 .mobilenav
@@ -161,6 +163,11 @@
 
 .mobilenav .header__nav_item--active
   border-bottom: none
+
+.fixed
+  .icon
+    margin-top: 0
+
 
 @media all and (max-width: width_md)
   .header

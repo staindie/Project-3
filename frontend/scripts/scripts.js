@@ -42,8 +42,8 @@
             $scope.filters.category = value;
         };
         //open modal window
-        $scope.clickToOpen = function (src) {
-            ngDialog.open({ template: ' <div class="popup-wrap"><img  class="popup-img" src="'+ src +'" alt=""/></div>', className: 'ngdialog-theme-default', plain: true, width: '60%' });
+        $scope.clickToOpen = function (item) {
+            ngDialog.open({ template: ' <div class="popup_wrap"><img class="popup_img" src="'+ item.src +'" alt=""/><span class="popup_name">'+ item.name +'</span>', className: 'ngdialog-theme-default', plain: true, width: '60%' });
         };
     }]);
 

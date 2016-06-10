@@ -8,10 +8,9 @@
            .portfolio__tabs_item(ng-click = "sort('photo')") photography
            .portfolio__tabs_item(ng-click = "sort('graphic')") graphic design
    .portfolio__wrap
-       //slick(infinite="true", slides-to-show="3",slides-to-scroll="1", class="showplaces-slick", init-onload="true", data="products", center-mode="true", center-padding="-40px", adaptive-height="true")
        .portfolio__photos.center
            a.portfolio__photo(ng-repeat = "product in products | filter : filters", products='each')
-                img.portfolio__photo_image(ng-src='{{product.src}}', ng-click='clickToOpen(product.src)')
+                img.portfolio__photo_image(ng-src='{{product.src}}', ng-click='clickToOpen(product)')
                 .portfolio__desc
                     .portfolio__photo_title {{product.name}}
                     .portfolio__photo_subtitle {{product.description}}

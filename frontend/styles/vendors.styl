@@ -1,0 +1,26 @@
+.ngdialog.ngdialog-theme-default .ngdialog-content
+  border-radius: 1px
+
+.ngdialog.ngdialog-theme-default .ngdialog-close:before
+  color color_white
+  font-size 40px
+  right -6px
+  top -34px
+  opacity .8
+  transition .3s
+
+.ngdialog.ngdialog-theme-default .ngdialog-close:hover:before, .ngdialog.ngdialog-theme-default .ngdialog-close:active:before
+  opacity .6
+  color color_white
+
+@media all and (max-width: width_md)
+  .ngdialog.ngdialog-theme-default .ngdialog-content
+    width: 80% !important
+
+@media all and (max-width: width_sm)
+  .ngdialog.ngdialog-theme-default .ngdialog-content
+    width: 85% !important
+
+@media all and (max-width: width_xs)
+  .ngdialog.ngdialog-theme-default .ngdialog-content
+    width: 95% !important
