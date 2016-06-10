@@ -27,7 +27,6 @@ Demo is [here](http://alena.kernazhytskaya.s3-website-us-west-2.amazonaws.com/)
 This project uses a number of open source projects to work properly:
 
 * [AngularJS](https://angularjs.org/) - HTML enhanced for web apps!
-* [node.js](https://nodejs.org/) - evented I/O for the backend
 * [Gulp](http://gulpjs.com/) - the streaming build system
 * [jQuery](https://jquery.com/) - JavaScript library
 * [Jade](http://jade-lang.com/) - Node template engine
