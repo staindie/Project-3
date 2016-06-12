@@ -40,3 +40,4 @@ Project is currently extended with the following plugins
 * [slick-carousel](http://kenwheeler.github.io/slick/)
 * [ng-dialog](https://github.com/likeastore/ngDialog)
 * [hamburgler](http://johnm.io/project/hamburgler/)
+* [jquery counter up](http://www.jqueryscript.net/animation/Animating-Numbers-Counting-Up-with-jQuery-Counter-Up-Plugin.html)
