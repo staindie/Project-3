@@ -869,6 +869,7 @@ body {
 .portfolio__counter-item {
   margin: 0 30px;
   text-align: center;
+  width: 12%;
 }
 .portfolio__counter-item_icon {
   height: 70px;
@@ -878,6 +879,8 @@ body {
   color: #fff;
   font-size: 40px;
   font-weight: 100;
+  width: 100%;
+  text-align: center;
 }
 .portfolio__counter-item_title {
   color: #fff;
@@ -901,6 +904,7 @@ body {
 @media all and (max-width: 990px) {
   .portfolio__counter-item {
     margin: 0 10px;
+    width: 50%;
   }
   .portfolio__counter-item_value {
     font-size: 35px;
@@ -926,6 +930,11 @@ body {
   }
   .portfolio__counter-item_icon {
     height: 50px;
+  }
+}
+@media all and (max-width: 460px) {
+  .portfolio__counter-item_value {
+    font-size: 23px;
   }
 }
 .footer {

@@ -82,7 +82,7 @@
         </div>
         <div class="portfolio__counters">
           <div ng-repeat="counter in counters" class="portfolio__counter-item"><img ng-src="{{counter.icon}}" class="portfolio__counter-item_icon">
-            <div class="portfolio__counter-item_value">{{counter.value}}</div>
+            <div class="portfolio__counter-item_value">{{counter.value | number}}</div>
             <div class="portfolio__counter-item_title">{{counter.description}}</div>
           </div>
         </div>
@@ -111,6 +111,8 @@
     <script src="../node_modules/slick-carousel/slick/slick.js"></script>
     <script src="scripts/hamburgler/hamburgler.js"></script>
     <script src="../node_modules/ng-dialog/js/ngDialog.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/waypoints/1.1.6/waypoints.min.js"></script>
+    <script src="scripts/counterup/jquery.counterup.js"></script>
     <script src="scripts.js"></script>
   </body>
 </html>

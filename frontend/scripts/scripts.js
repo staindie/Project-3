@@ -32,7 +32,7 @@
 
         $scope.counters = [
             {value : '3054', description : "completed projects", icon: "images/icon-projects.png"},
-            {value : '7 234 873', description : "click presed", icon: "images/icon-click.png"},
+            {value : '7234873', description : "click presed", icon: "images/icon-click.png"},
             {value : '4670', description : "mails sended and received", icon: "images/icon-mails.png"},
             {value : '939', description : "jokes tolds", icon: "images/icon-jokes.png"}
         ];
@@ -57,8 +57,13 @@
         return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
     }
 
-    angular.element(document).ready(function() {
 
+    $(document).ready(function() {
+
+        $('.portfolio__counter-item_value').counterUp({
+            delay: 10, // the delay time in ms
+            time: 1000 // the speed time in ms
+        });
         //gallery settings
         var slickSettings = {
             centerMode: true,
@@ -127,6 +132,9 @@
         //top-menu behavior
         var nav = $('#nav');
         var navpos = nav.offset();
+
+
+
 
         $(window).bind('scroll', function() {
             if ($(window).scrollTop() > navpos.top) {

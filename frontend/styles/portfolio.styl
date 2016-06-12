@@ -94,6 +94,7 @@
   &__counter-item
     margin 0 30px
     text-align center
+    width: 12%;
     &_icon
       height 70px
     &_value
@@ -101,6 +102,8 @@
       color color_white
       font-size 40px
       font-weight 100
+      width 100%
+      text-align center
     &_title
       color color_white
       font-size 13px
@@ -119,10 +122,11 @@
     font-weight 500
     text-align: center
 
-@media all and (max-width: 990px)
+@media all and (max-width: width_md)
   .portfolio
     &__counter-item
       margin: 0 10px
+      width: 50%
       &_value
         font-size 35px
       &_title
@@ -145,5 +149,9 @@
         font-size 11px
       &_icon
         height: 50px
-
+@media all and (max-width: width_xs)
+  .portfolio
+    &__counter-item
+      &_value
+        font-size 23px
 
