@@ -10,6 +10,7 @@
     "gulp": "^3.9.1",
     "gulp-jade": "^1.1.0",
     "gulp-stylus": "^2.4.0",
+    "gulp-uglify": "^0.3.1",
     "jade": "^1.11.0",
     "kendo-ui-core": "^2016.3.1118",
     "ng-dialog": "^0.6.1",
