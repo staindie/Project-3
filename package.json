@@ -1,10 +1,10 @@
 {
-  "name": "forte",
+  "name": "project-2",
   "version": "1.0.0",
   "description": "",
   "author": "",
   "license": "ISC",
-  "repository": "https://github.com/divizionbyzero/forte.git",
+  "repository": "https://github.com/staindie/Project-2.git",
   "dependencies": {
     "angular": "^1.5.6",
     "gulp": "^3.9.1",
@@ -14,7 +14,9 @@
     "ng-dialog": "^0.6.1",
     "reset-css": "^2.0.2011012603",
     "slick-carousel": "^1.6.0",
-    "stylus": "^0.54.5"
+    "stylus": "^0.54.5",
+    "uglify": "^0.1.5",
+    "uglify-js": "^2.7.5"
   },
   "devDependencies": {
     "gulp-clean-css": "^2.0.10",
