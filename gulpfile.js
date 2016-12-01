@@ -4,6 +4,7 @@ var stylus = require('gulp-stylus');
 var cleanCSS = require('gulp-clean-css');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
+var webserver = require('gulp-webserver');
 
 gulp.task('jade', function () {
     var YOUR_LOCALS = {};
@@ -51,6 +52,16 @@ gulp.task('watch', function () {
     // Other watchers
 });
 
+gulp.task('webserver', function() {
+    gulp.src('')
+        .pipe(webserver({
+            livereload: true,
+            fallback: 'frontend/index.html',
+            port: 8080,
+            open: true
+        }));
+});
 
+gulp.task('dev', ['webserver' , 'watch']);
 
 gulp.task('default', ['jade' , 'stylus']);
