@@ -6,49 +6,59 @@ var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 var webserver = require('gulp-webserver');
 
-gulp.task('jade', function () {
+gulp.task('jade-html', function () {
     var YOUR_LOCALS = {};
-    gulp.src('frontend/templates/index.jade')
+    gulp.src('src/templates/**/*.jade')
         .pipe(jade({
             locals: YOUR_LOCALS,
             pretty: true
         }))
-        .pipe(gulp.dest('frontend'));
+        .pipe(gulp.dest('templates'));
+});
+
+gulp.task('jade-index', function () {
+    var YOUR_LOCALS = {};
+    gulp.src('src/templates/index.jade')
+        .pipe(jade({
+            locals: YOUR_LOCALS,
+            pretty: true
+        }))
+        .pipe(gulp.dest(''));
 });
 
 gulp.task('minify-css', function() {
-    return gulp.src('frontend/styles/*.css')
+    return gulp.src('src/styles/*.css')
         .pipe(sourcemaps.init())
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('frontend'));
+        .pipe(gulp.dest('styles'));
 });
 
 gulp.task('compress', function() {
-    return gulp.src('frontend/scripts/*.js')
+    return gulp.src('src/scripts/*.js')
         .pipe(sourcemaps.init())
         .pipe(uglify({mangle: false}))
         .pipe(sourcemaps.write())
-        .pipe(gulp.dest('frontend'));
+        .pipe(gulp.dest('scripts'));
 });
 
 gulp.task('stylus', function () {
     var YOUR_LOCALS = {};
-    return gulp.src('./frontend/styles/style.styl')
+    return gulp.src('./src/styles/style.styl')
         .pipe(stylus({
             locals: YOUR_LOCALS,
             pretty: true
         }))
-        .pipe(gulp.dest('./frontend/styles'));
+        .pipe(gulp.dest('./src/styles'));
 });
 
 gulp.task('css', ['stylus' , 'minify-css']);
 
 gulp.task('watch', function () {
-    gulp.watch('frontend/templates/**/*.jade', ['jade']);
-    gulp.watch('frontend/styles/**/*.styl', ['stylus']);
-    gulp.watch('frontend/styles/**/*.css', ['minify-css']);
-    gulp.watch('frontend/scripts/**/*.js', ['compress']);
+    gulp.watch('src/templates/**/*.jade', ['jade-html','jade-index']);
+    gulp.watch('src/styles/**/*.styl', ['stylus']);
+    gulp.watch('src/styles/**/*.css', ['minify-css']);
+    gulp.watch('src/scripts/**/*.js', ['compress']);
     // Other watchers
 });
 
@@ -56,7 +66,7 @@ gulp.task('webserver', function() {
     gulp.src('')
         .pipe(webserver({
             livereload: true,
-            fallback: 'frontend/index.html',
+            fallback: 'index.html',
             port: 8080,
             open: true
         }));
