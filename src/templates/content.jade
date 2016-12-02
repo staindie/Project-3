@@ -1,2 +1,5 @@
-content.content BBBBBBBBBBBBBBBBBBBBBBBBBBBB
-    div#pivotgrid
+content.content(ng-app="myApp")
+    div#example(ng-controller="MainController")
+        .hidden-on-narrow#configurator(kendo-pivot-configurator, k-height="580", k-data-source="dataSource")
+        .hidden-on-narrow#pivotgrid(kendo-pivot-grid, k-options="options")
+        .responsive-message

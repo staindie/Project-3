@@ -6,3 +6,10 @@
 .clearfix:after {
   clear: both;
 }
+#pivotgrid {
+  width: 70%;
+}
+.hidden-on-narrow {
+  display: inline-block;
+  vertical-align: top;
+}
