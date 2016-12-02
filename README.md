@@ -14,7 +14,7 @@ $ npm i -g gulp
 $ git clone [https://github.com/staindie/Project-2.git]
 $ cd project-2
 $ npm i -d
-$ gulp watch (if you want to change something)
+$ gulp dev (if you want to change something)
 ```
 
 After all dependencies will be install, and watcher is started, you can run index.html, see and change my test project
