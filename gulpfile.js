@@ -37,7 +37,7 @@ gulp.task('minify-css', function() {
 });
 
 gulp.task('replace-min-js', function(){
-    return gulp.src('src/scripts/*.min.js')
+    return gulp.src(['src/scripts/*.min.js', 'src/scripts/*.js.map'])
         .pipe(gulp.dest('scripts'));
 });
 
