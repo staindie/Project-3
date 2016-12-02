@@ -5,6 +5,7 @@ var cleanCSS = require('gulp-clean-css');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
 var webserver = require('gulp-webserver');
+var rename = require("gulp-rename");
 
 gulp.task('jade-html', function () {
     var YOUR_LOCALS = {};
@@ -31,14 +32,21 @@ gulp.task('minify-css', function() {
         .pipe(sourcemaps.init())
         .pipe(cleanCSS({compatibility: 'ie8'}))
         .pipe(sourcemaps.write())
+        .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('styles'));
 });
 
-gulp.task('compress', function() {
-    return gulp.src('src/scripts/*.js')
+gulp.task('replace-min-js', function(){
+    return gulp.src('src/scripts/*.min.js')
+        .pipe(gulp.dest('scripts'));
+});
+
+gulp.task('compress', ['replace-min-js'], function() {
+    return gulp.src(['src/scripts/*.js', '!src/scripts/*.min.js'])
         .pipe(sourcemaps.init())
         .pipe(uglify({mangle: false}))
         .pipe(sourcemaps.write())
+        .pipe(rename({suffix: '.min'}))
         .pipe(gulp.dest('scripts'));
 });
 
@@ -54,7 +62,7 @@ gulp.task('stylus', function () {
 
 gulp.task('css', ['stylus' , 'minify-css']);
 
-gulp.task('watch', function () {
+gulp.task('watch', ['update'], function () {
     gulp.watch('src/templates/**/*.jade', ['jade-html','jade-index']);
     gulp.watch('src/styles/**/*.styl', ['stylus']);
     gulp.watch('src/styles/**/*.css', ['minify-css']);
@@ -74,4 +82,4 @@ gulp.task('webserver', function() {
 
 gulp.task('dev', ['webserver' , 'watch']);
 
-gulp.task('default', ['jade' , 'stylus']);
+gulp.task('update', ['jade-html','jade-index' , 'stylus', 'minify-css', 'compress']);
