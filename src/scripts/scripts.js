@@ -10,79 +10,31 @@
                 },
                 link: function($scope) {
 
-                    FusionCharts.ready(function(){
-                        var revenueChart = new FusionCharts({
-                            "type": "mscolumn3d",
-                            "renderAt": $scope.containerName,
-                            "width": "500",
-                            "height": "300",
-                            "dataFormat": "json",
-                            "dataSource": {
-                                "chart": {
-                                    "caption": "Revenue",
-                                    "xAxisName": "Year",
-                                    "yAxisName": "Revenues (In USD)",
-                                    "theme": "fint"
-                                },
-                                "categories": [
-                                    {
-                                        "category": [
-                                            {
-                                                "label": "Quarter 1"
-                                            },
-                                            {
-                                                "label": "Quarter 2"
-                                            },
-                                            {
-                                                "label": "Quarter 3"
-                                            },
-                                            {
-                                                "label": "Quarter 4"
-                                            }
-                                        ]
-                                    }
-                                ],
-                                "dataset": [
-                                    {
-                                        "seriesname": "Fixed Cost",
-                                        "data": [
-                                            {
-                                                "value": "235000"
-                                            },
-                                            {
-                                                "value": "225100"
-                                            },
-                                            {
-                                                "value": "222000"
-                                            },
-                                            {
-                                                "value": "230500"
-                                            }
-                                        ]
-                                    },
-                                    {
-                                        "seriesname": "Variable Cost",
-                                        "data": [
-                                            {
-                                                "value": "230000"
-                                            },
-                                            {
-                                                "value": "143000"
-                                            },
-                                            {
-                                                "value": "198000"
-                                            },
-                                            {
-                                                "value": "327600"
-                                            }
-                                        ]
-                                    }
-                                ]
-                            }
-                        });
+                    //$scope.chartObject.chart = {
+                    //    "caption": "Revenue",
+                    //    "xAxisName": "Year",
+                    //    "yAxisName": "Revenues (In USD)",
+                    //    "theme": "fint"
+                    //};
 
-                        revenueChart.render();
-                    })
+                    var createChart = function(){
+                        FusionCharts.ready(function(){
+                            var revenueChart = new FusionCharts({
+                                "type": "mscolumn3d",
+                                "renderAt": $scope.containerName,
+                                "width": "500",
+                                "height": "300",
+                                "dataFormat": "json",
+                                "dataSource": $scope.chartObject
+                            });
+                            revenueChart.render();
+                        });
+                    };
+
+                    $scope.$watch('chartObject', function(){
+                        console.log($scope.chartObject);
+                        createChart();
+                    }, true);
                 }
             };
         });
@@ -102,14 +54,14 @@
         ];
 
         $scope.dataSource = new kendo.data.PivotDataSource({
-            columns: ["Year" ],
+            columns: [{name:"Year", expand: true} ],
             rows: [{name: "Category", expand: true}],
             measures: [{name: 'Sum2'}, {name: 'Sum3'}],
             data: $scope.dataObject,
             schema: {
                 cube: {
                     dimensions: {
-                        Year: {caption: "All years"},
+                        Year: {caption: "All years", expand: true},
                         Category: {caption: "All Categories"}
                     },
                     measures: {
@@ -141,25 +93,44 @@
 
         $scope.showScope = function() {
             console.log($scope);
-        }
+        };
 
         $scope.getChartObject = function() {
             var rowNamesArray = [];
-            var upperHeadersNamesArray = [];
-            var lowerHeadersNamesArray = [];
-            $.each($('.k-grid.k-widget.k-alt tbody td:nth-child(2) span'), function (index, item) {
+            var allHeadersNamesArray = [];
+            var category = [];
+            var dataSet = [];
+            var resultObj = {};
+
+            $.each($('.k-grid.k-widget.k-alt tbody td:last-child span'), function (index, item) {
                 rowNamesArray.push(item.innerHTML);
             });
-            $.each($('.k-grid-header-wrap tr:nth-child(2) span'), function (index, item) {
-                upperHeadersNamesArray.push(item.innerHTML);
-            });
-            $.each($('.k-grid-header-wrap tr:nth-child(3) span'), function (index, item) {
-                if (lowerHeadersNamesArray.indexOf(item.innerHTML) == -1){
-                    lowerHeadersNamesArray.push(item.innerHTML);
+
+            $.each($('.k-grid-header-wrap tr:nth-child(2) th'), function (index, item) {
+                var colspan = $(item).attr('colspan');
+                var upperText = $(item).find('span').html();
+                for (var i=1; i<=colspan; i++){
+                    var lowerText = upperText + ' ' + $('.k-grid-header-wrap tr:nth-child(3) th:nth-child('+i+') span').html();
+                    allHeadersNamesArray.push(lowerText);
                 }
             });
-            console.log(lowerHeadersNamesArray);
-        }
+
+            rowNamesArray.forEach( function(item, index) {
+                dataSet.push({seriesname: item, data:[]});
+            });
+
+            allHeadersNamesArray.forEach( function(item,index){
+                category.push({label: item});
+                rowNamesArray.forEach( function(item, index){
+                    dataSet[index].data.push(100);
+                });
+            });
+
+            resultObj = {categories: [category], dataSet: dataSet};
+            return resultObj;
+        };
+
+        $scope.dataObject = $scope.getChartObject();
 
     }]);
 
