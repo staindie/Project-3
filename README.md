@@ -19,9 +19,6 @@ $ gulp dev (if you want to change something)
 
 After all dependencies will be install, and watcher is started, you can run index.html, see and change my test project
 
-### Demo
-Demo is [here](http://alena.kernazhytskaya.s3-website-us-west-2.amazonaws.com/)
-
 ### Tech
 
 This project uses a number of open source projects to work properly:
