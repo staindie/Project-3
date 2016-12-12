@@ -1,9 +1,9 @@
-content.content(ng-app="myApp")
-    div#example(ng-controller="MainController")
-        .hidden-on-narrow#configurator(kendo-pivot-configurator, k-height="580", k-data-source="dataSource")
-        .hidden-on-narrow#pivotgrid(kendo-pivot-grid, k-options="options")
+content.content
+    div#example
+        .hidden-on-narrow#configurator
+        .hidden-on-narrow#pivotgrid
         .responsive-message
 
-        button(ng-click="getChartObject()") getChartObject
+        button(onclick="getChartObject()") getChartObject
 
-        div#chartContainer(create-chart, chart-object="dataObject" container-name="chartContainer") FusionCharts XT will load here!
+        div#chartContainer FusionCharts XT will load here!
