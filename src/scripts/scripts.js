@@ -1,7 +1,7 @@
 (function () {
     var app = angular.module('myApp', ['ngDialog', 'kendo.directives']);
 
-    app.directive('createChart', function() {
+    app.directive('createChart', ['$timeout', function($timeout) {
             return {
                 restrict: 'A',
                 scope: {
@@ -17,14 +17,41 @@
                     //    "theme": "fint"
                     //};
 
+                    var chartObject = {
+                        "categories": [
+                            {
+                                "category": [{"label": "Jan"}, {"label": "Feb"}, {"label": "Mar"}, {"label": "Apr"}, {"label": "May"}, {"label": "Jun"}, {"label": "Jul"}, {"label": "Aug"}, {"label": "Sep"}, {"label": "Oct"}, {"label": "Nov"}, {"label": "Dec"}]
+                            }
+                        ],
+                        "dataset": [
+                            {
+                                "seriesname": "2015",
+                                "data": [{"value": "12200"}, {"value": "12200"}, {"value": "12200"}, {"value": "12200"}, {"value": "12200"}, {"value": "12200"}, {"value": "12200"}, {"value": "12200"}, {"value": "12200"}, {"value": "12200"}, {"value": "12200"}, {"value": "12200"}]
+                            },
+                            {
+                                "seriesname": "2014",
+                                "data": [{"value": "12200"}, {"value": "12200"}, {"value": "12200"}, {"value": "12200"}, {"value": "12200"}, {"value": "12200"}, {"value": "12200"}, {"value": "12200"}, {"value": "12200"}, {"value": "12200"}, {"value": "12200"}, {"value": "12200"}]
+                            },
+                            {
+                                "seriesname": "2013",
+                                "data": [{"value": "12200"}, {"value": "12200"}, {"value": "12200"}, {"value": "12200"}, {"value": "12200"}, {"value": "12200"}, {"value": "12200"}, {"value": "12200"}, {"value": "12200"}, {"value": "12200"}, {"value": "12200"}, {"value": "12200"}]
+                            }
+                        ]
+                    };
+
                     var createChart = function(){
+
+                        console.log(chartObject);
+                        console.log($scope.chartObject);
+
                         FusionCharts.ready(function(){
                             var revenueChart = new FusionCharts({
                                 "type": "mscolumn3d",
                                 "renderAt": $scope.containerName,
-                                "width": "500",
-                                "height": "300",
+                                "width": "80%",
+                                "height": "500",
                                 "dataFormat": "json",
+                                //"dataSource": chartObject
                                 "dataSource": $scope.chartObject
                             });
                             revenueChart.render();
@@ -32,12 +59,11 @@
                     };
 
                     $scope.$watch('chartObject', function(){
-                        console.log($scope.chartObject);
                         createChart();
                     }, true);
                 }
             };
-        });
+        }]);
 
 
 
@@ -88,11 +114,10 @@
         $scope.options = {
             columnWidth: 200,
             height: 580,
-            dataSource: $scope.dataSource
-        };
-
-        $scope.showScope = function() {
-            console.log($scope);
+            dataSource: $scope.dataSource,
+            dataBound: function(e) {
+                $scope.getChartObject();
+            }
         };
 
         $scope.getChartObject = function() {
@@ -100,7 +125,6 @@
             var allHeadersNamesArray = [];
             var category = [];
             var dataSet = [];
-            var resultObj = {};
 
             $.each($('.k-grid.k-widget.k-alt tbody td:last-child span'), function (index, item) {
                 rowNamesArray.push(item.innerHTML);
@@ -119,18 +143,17 @@
                 dataSet.push({seriesname: item, data:[]});
             });
 
-            allHeadersNamesArray.forEach( function(item,index){
+            allHeadersNamesArray.forEach( function(item,index_col){
                 category.push({label: item});
-                rowNamesArray.forEach( function(item, index){
-                    dataSet[index].data.push(100);
+                rowNamesArray.forEach( function(item, index_row){
+                    var val = $('.k-grid-content tr:nth-child('+(index_row+1)+') td:nth-child('+(index_col+1)+') ').html();
+                    console.log(val);
+                    dataSet[index_row].data.push({value: val});
                 });
             });
 
-            resultObj = {categories: [category], dataSet: dataSet};
-            return resultObj;
+            $scope.dataObject = {categories: [{category: category}], dataset: dataSet};
         };
-
-        $scope.dataObject = $scope.getChartObject();
 
     }]);
 
