@@ -1,13 +1,13 @@
 $(document).ready(function () {
 
     var dataObject = [
-        {"Year": "2010", "value": 42, "value2": 15, Category: "Beverages"},
-        {"Year": "2010", "value": 42, "value2": 2, Category: "Food"},
-        {"Year": "2011", "value": 81, "value2": 3, Category: "Neverages"},
-        {"Year": "2012", "value": 72, "value2": 4, Category: "Beverages"},
-        {"Year": "2013", "value": 55, "value2": 6, Category: "Neverages"},
-        {"Year": "2014", "value": 91, "value2": 7, Category: "Food"},
-        {"Year": "2015", "value": 51, "value2": 8, Category: "Neverages"}
+        {"Year": "2010", "value": 42, "value2": 15, Category: "Beverages", Type: "Type1"},
+        {"Year": "2010", "value": 42, "value2": 2, Category: "Food", Type: "Type2"},
+        {"Year": "2011", "value": 81, "value2": 3, Category: "Neverages", Type: "Type2"},
+        {"Year": "2012", "value": 72, "value2": 4, Category: "Beverages", Type: "Type1"},
+        {"Year": "2013", "value": 55, "value2": 6, Category: "Neverages", Type: "Type2"},
+        {"Year": "2014", "value": 91, "value2": 7, Category: "Food", Type: "Type1"},
+        {"Year": "2015", "value": 51, "value2": 8, Category: "Neverages", Type: "Type2"}
     ];
 
     var dataSource = new kendo.data.PivotDataSource({
@@ -19,7 +19,8 @@ $(document).ready(function () {
             cube: {
                 dimensions: {
                     Year: {caption: "All years", expand: true},
-                    Category: {caption: "All Categories"}
+                    Category: {caption: "All Categories"},
+                    Type: {caption: "All types"}
                 },
                 measures: {
                     "Sum": {
@@ -114,7 +115,6 @@ $(document).ready(function () {
                 },
                 dataBound: function(e) {
                     var categoryAxis = e.sender.options.categoryAxis;
-
                     if (categoryAxis && categoryAxis.categories) {
                         categoryAxis.categories.sort();
                     }
