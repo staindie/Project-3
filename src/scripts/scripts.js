@@ -12,7 +12,7 @@ $(document).ready(function () {
 
     var dataSource = new kendo.data.PivotDataSource({
         columns: [{name: "Year", expand: true}],
-        rows: [{name: "Category", expand: true}],
+        rows: [{name: "Category", expand: true}, {name: "Type", expand: true}],
         measures: [{name: 'Sum2'}, {name: 'Sum3'}],
         data: dataObject,
         schema: {
