@@ -97,7 +97,7 @@ $(document).ready(function () {
                 series: [{
                     type: "column",
                     field: "measure",
-                    name: "#= group.value # (category)",
+                    name: "#= group.value #",
                     categoryField: "column"
                 }],
                 legend: {

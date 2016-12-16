@@ -93,7 +93,16 @@ function fullPath(members, idx) {
     return path;
 }
 
-function memberCaption(member) { return member.caption }
+function memberCaption(member) {
+    if (member.caption == 'All'){
+        var name = member.name.split('&').pop();
+        return name;
+    }
+    if (member.hierarchy == 'MEASURES'){
+        return '- '+member.name;
+    }
+    return member.caption ;
+}
 
 function extractCaption(members) {
     return $.map(members, memberCaption).join(" ");
@@ -101,12 +110,6 @@ function extractCaption(members) {
 
 function fullPathCaptionName(members, dLength, idx) {
     var result = extractCaption(members.slice(0, idx + 1));
-    var measureName = extractCaption(members.slice(dLength, members.mLength));
-
-    if (measureName) {
-        result += " - " + measureName;
-    }
-
     return result;
 }
 
@@ -132,22 +135,18 @@ function convertData(dataSource, collapsed) {
                 columnTuple = columnTuples[j];
 
                 if (!isCollapsed(columnTuple, collapsed.columns)) {
-                    if (idx > columnsLength && idx % columnsLength !== 0) {
-                        for (var ri = 0; ri < rowTuple.members.length; ri++) {
-                            for (var ci = 0; ci < columnTuple.members.length; ci++) {
+                    if ((idx % columnsLength !== 0) || (idx == columnsLength == 0)) {
                                 //do not add root tuple members, e.g. [CY 2005, All Employees]
                                 //Add only children
-                                if (!columnTuple.members[ci].parentName || !rowTuple.members[ri].parentName) {
-                                    continue;
-                                }
+                                //if (!columnTuple.members[ci].parentName || !rowTuple.members[ri].parentName) {
+                                var ci = columnTuple.members.length-1;
+                                var ri = rowTuple.members.length-1;
 
                                 result.push({
                                     measure: Number(data[idx].value),
                                     column: fullPathCaptionName(columnTuple.members, columnDimensionsLength, ci),
                                     row: fullPathCaptionName(rowTuple.members, rowDimensionsLength, ri)
                                 });
-                            }
-                        }
                     }
                 }
                 idx += 1;
