@@ -135,10 +135,8 @@ function convertData(dataSource, collapsed) {
                 columnTuple = columnTuples[j];
 
                 if (!isCollapsed(columnTuple, collapsed.columns)) {
-                    if ((idx % columnsLength !== 0) || (idx == columnsLength == 0)) {
-                                //do not add root tuple members, e.g. [CY 2005, All Employees]
-                                //Add only children
-                                //if (!columnTuple.members[ci].parentName || !rowTuple.members[ri].parentName) {
+                    if (data[idx].value) {
+                    //if ((idx % columnsLength !== 0) || (idx == columnsLength == 0)) {
                                 var ci = columnTuple.members.length-1;
                                 var ri = rowTuple.members.length-1;
 
